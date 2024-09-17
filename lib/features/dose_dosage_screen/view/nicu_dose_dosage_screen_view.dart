@@ -18,22 +18,41 @@ class _DrugDosageScreenState extends State<DrugDosageScreen> {
 
   String _result = '';
 
-  void _calculateSolution() {
-    setState(() {
-      String drug = _selectedDrug;
-      String concentration = _concentrationController.text;
-      String dose = _doseController.text;
-      String dilution = _dilutionController.text;
-      String weight = _weightController.text;
+void _calculateSolution() {
+  setState(() {
+    String drug = _selectedDrug;
+    String concentration = _concentrationController.text;
+    String dose = _doseController.text;
+    String dilution = _dilutionController.text;
+    String weight = _weightController.text;
 
-      if (concentration.isNotEmpty && dose.isNotEmpty && dilution.isNotEmpty) {
-        _result =
-            'Препарат: $drug, растворить в $dilution мл. Концентрация: $concentration%, доза: $dose мкг/кг/мин.';
-      } else {
-        _result = 'Заполните все поля!';
+    if (concentration.isNotEmpty && dose.isNotEmpty && dilution.isNotEmpty && weight.isNotEmpty) {
+      // Преобразуем введенные значения в числа
+      double doseValue = double.tryParse(dose) ?? 0;
+      double concentrationValue = double.tryParse(concentration) ?? 0;
+      double weightValue = double.tryParse(weight) ?? 0;
+
+      // Формула: доза * вес * 1.44 / концентрация
+      double calculatedDose = ((doseValue * weightValue * 1.44) / concentrationValue) / 1000;
+
+      // Текстовый вывод
+      _result =
+          '$drug: расчетная доза $calculatedDose мл развести до $dilution мл. При скорости 1 мл/ч доза составит $dose мкг/кг/мин.\n';
+
+      // Таблица скоростей от 0,1 до 1 мл/ч
+      _result += 'Скорость (мл/ч) - Доза (мкг/кг/мин):\n';
+      
+      for (double rate = 0.1; rate <= 1.0; rate += 0.1) {
+        // Рассчитываем дозу для каждой скорости
+        double doseAtRate = (doseValue * rate) / 1.0; // Доза пропорциональна скорости
+        _result += '${rate.toStringAsFixed(1)} мл/ч - ${doseAtRate.toStringAsFixed(2)} мкг/кг/мин\n';
       }
-    });
-  }
+    } else {
+      _result = 'Заполните все поля!';
+    }
+  });
+}
+
 
   @override
   Widget build(BuildContext context) {

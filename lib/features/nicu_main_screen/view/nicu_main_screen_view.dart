@@ -21,7 +21,6 @@ class _NicuHelpMainScreenState extends State<NicuHelpMainScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -34,7 +33,7 @@ class _NicuHelpMainScreenState extends State<NicuHelpMainScreen> {
                 },
                 child: const Text('Калькулятор парентерального питания'),
               ),
-            ),
+             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: ElevatedButton(
