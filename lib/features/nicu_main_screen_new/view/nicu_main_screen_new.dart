@@ -126,13 +126,6 @@ class _NicuHelpMainScreenNewState extends State<NicuHelpMainScreenNew> {
                     },
                     child: const Text('Вентиляционные параметры'),
                   ),
-                  const SizedBox(height: 8),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/patient_progress');
-                    },
-                    child: const Text('Динамика лечения'),
-                  ),
                 ],
               ),
             ),
