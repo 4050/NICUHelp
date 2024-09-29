@@ -149,7 +149,7 @@ class _NicuHelpMainScreenNewState extends State<NicuHelpMainScreenNew> {
                   context,
                   icon: Icons.air,
                   label: 'Вентиляция',
-                  route: '/ventilation_parameters',
+                  route: '/ventilation_screen',
                 ),
               ],
             ),
