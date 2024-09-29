@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NoradrenalinForm extends StatefulWidget {
+  const NoradrenalinForm({super.key});
+
   @override
   _NoradrenalinFormState createState() => _NoradrenalinFormState();
 }

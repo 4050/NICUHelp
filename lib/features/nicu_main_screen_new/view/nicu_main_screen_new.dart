@@ -62,14 +62,14 @@ class _NicuHelpMainScreenNewState extends State<NicuHelpMainScreenNew> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.history),
+              leading: const Icon(Icons.history),
               title: const Text('История пациентов'),
               onTap: () {
                 // Логика перехода к истории пациентов
               },
             ),
             ListTile(
-              leading: Icon(Icons.article),
+              leading: const Icon(Icons.article),
               title: const Text('Протоколы интенсивной терапии'),
               onTap: () {
                 // Логика перехода к протоколам

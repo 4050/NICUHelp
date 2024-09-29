@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'adrenalin_form.dart';
 import 'package:nicu_help/features/dose_dosage_screen/widget/widget.dart';
-//import 'dobutamin_form.dart';
 
 class DrugDosageScreen extends StatefulWidget {
   const DrugDosageScreen({super.key});
@@ -43,7 +41,9 @@ class _DrugDosageScreenState extends State<DrugDosageScreen> {
             ),
             const SizedBox(height: 16.0),
             Expanded(
-              child: _buildDrugSpecificForm(),
+              child: SingleChildScrollView(
+                child: _buildDrugSpecificForm(),
+              ),
             ),
           ],
         ),

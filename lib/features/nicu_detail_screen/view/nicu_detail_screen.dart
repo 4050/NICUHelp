@@ -22,7 +22,7 @@ String? titleName;
       return;
     }
     setState(() {});
-    titleName = args as String;
+    titleName = args;
     super.didChangeDependencies();
   }
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DobutaminForm extends StatefulWidget {
+  const DobutaminForm({super.key});
+
   @override
   _DobutaminFormState createState() => _DobutaminFormState();
 }
@@ -24,14 +26,14 @@ class _DobutaminFormState extends State<DobutaminForm> {
         final rateFix = dilution == 12 ? '0.5' : '1.0';
         _result = 'Добутамин: расчетная доза ${calculatedDose.toStringAsFixed(2)} мл развести до $dilution мл. '
                   'При скорости $rateFix мл/час доза составит ${dose.toStringAsFixed(2)} мкг/кг/мин.\n';
-        _result += _generateDoseTable(dose);
+        _result += _generateDoseTable(dose, dilution);
       } else {
         _result = 'Заполните все поля!';
       }
     });
   }
 
-  String _generateDoseTable(double dose) {
+  String _generateDoseTable(double dose, double dilution) {
     final buffer = StringBuffer('Скорость (мл/ч) - Доза (мкг/кг/мин):\n');
     final multiplier = dose > 0.9 ? 1 : 10;
     for (double rate = 0.1; rate <= 1.0; rate += 0.1) {
